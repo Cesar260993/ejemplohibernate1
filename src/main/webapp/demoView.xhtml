@@ -1,0 +1,39 @@
+<html  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Usuario Cobranza</title>			
+	</h:head>
+
+	<h:body>
+		
+		<h:form id="form">
+			
+			<p:commandButton  value="Consultar Usuarios" actionListener="#{demoController.probarHibernate}"  update="mainDatatable"  process="@this" >
+			</p:commandButton>
+			
+			<br/><br/>
+			
+			
+			<p:dataTable  id="mainDatatable" var="user" value="#{demoController.usuarios}" 
+                 emptyMessage="No hay usuarios para mostrar..." >
+		 
+		        <p:column filterBy="#{user.idUsuario}" headerText="Id" footerText="contains" filterMatchMode="contains">
+		            <h:outputText value="#{user.idUsuario}" />
+		        </p:column>
+		        
+		        <p:column filterBy="#{user.username}" headerText="Username" footerText="contains" filterMatchMode="contains">
+		            <h:outputText value="#{user.username}" />
+		        </p:column>
+		 
+		       
+		    </p:dataTable>
+			
+			
+		</h:form>
+	
+	</h:body>	
+
+</html>
